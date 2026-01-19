@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sand Blast - Pyramid Edition | Fun Elimination Puzzle Game</title>
+    <meta name="description" content="Sand Blast - Pyramid Edition is a relaxing puzzle game where you place colorful sand blocks, eliminate them to trigger cascading effects, and complete level objectives.">
+    <meta name="keywords" content="puzzle game, sand game, elimination game, casual game, mobile game">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF9800;
+            --primary-dark: #F57C00;
+            --secondary: #2196F3;
+            --secondary-dark: #1976D2;
+            --dark: #2C3E50;
+            --light: #F5F7FA;
+            --gray: #7F8C8D;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.95)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            box-shadow: 0 5px 20px rgba(255, 152, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+        }
+
+        /* Game Info */
+        .game-info {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .info-card p {
+            color: var(--gray);
+        }
+
+        /* Age Rating */
+        .age-rating {
+            background-color: var(--light);
+            padding: 40px 0;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 15px;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .rating-badge i {
+            color: var(--success);
+            font-size: 24px;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .privacy-notice h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .privacy-notice a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .privacy-notice a:hover {
+            text-decoration: underline;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Download Section */
+        .download {
+            background: linear-gradient(135deg, var(--dark), #1a2530);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: white;
+            color: var(--dark);
+            padding: 18px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 200px;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .store-btn i {
+            font-size: 32px;
+        }
+
+        .btn-text {
+            text-align: left;
+        }
+
+        .btn-text small {
+            display: block;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Compliance Badges */
+        .compliance-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            font-size: 14px;
+        }
+
+        .badge i {
+            color: var(--success);
+            font-size: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                margin-top: 15px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .store-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.75rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .info-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--secondary);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        SBP
+                    </div>
+                    <div class="logo-text">
+                        <h1>Sand <span class="highlight">Blast</span></h1>
+                        <p>Pyramid Edition</p>
+                    </div>
+                </a>
+                
+                <nav>
+                    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h2 id="hero-title">Experience the Ultimate Sand Blast Adventure!</h2>
+                <p>A relaxing and fun elimination puzzle game where you place colorful sand blocks, eliminate them to trigger cascading sand effects, and achieve level objectives.</p>
+                <a href="#download" class="cta-button">Download Now</a>
+            </div>
+        </section>
+
+        <!-- Game Info -->
+        <section class="game-info" aria-labelledby="game-info-title">
+            <div class="container">
+                <h2 id="game-info-title" class="section-title">About the Game</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Addictive Puzzle Gameplay</h3>
+                        <p>Strategically place and match colorful sand blocks to create satisfying chain reactions and complete challenging levels.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-eye-dropper"></i>
+                        </div>
+                        <h3>Vibrant Visual Effects</h3>
+                        <p>Enjoy beautiful sand cascade effects, smooth animations, and colorful graphics that make every move satisfying.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Progressive Challenge</h3>
+                        <p>Start easy and progress through hundreds of uniquely designed levels with increasing difficulty and special objectives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Age Rating -->
+        <section class="age-rating" aria-label="Age rating information">
+            <div class="container">
+                <div class="rating-badge">
+                    <i class="fas fa-child"></i>
+                    <span>Rated E for Everyone</span>
+                </div>
+                <p>Suitable for all ages. No violence, inappropriate content, or gambling elements.</p>
+            </div>
+        </section>
+
+        <!-- Privacy Notice -->
+        <section class="privacy-notice" id="privacy" aria-labelledby="privacy-title">
+            <div class="container">
+                <h3 id="privacy-title"><i class="fas fa-shield-alt"></i> Privacy & Data Protection</h3>
+                <p>We are committed to protecting your privacy. Our game collects minimal data necessary for functionality. We do not sell personal information to third parties.</p>
+                <p>For detailed information about data collection and usage, please read our <a href="terms.html#privacy">Privacy Policy</a>.</p>
+            </div>
+        </section>
+
+        <!-- Compliance Badges -->
+        <div class="container">
+            <div class="compliance-badges">
+                <div class="badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Secure Transactions</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-user-shield"></i>
+                    <span>COPPA Compliant</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-gavel"></i>
+                    <span>GDPR Ready</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <section class="features" id="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="section-title">Game Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>Cascading Sand Effects</h3>
+                        <p>Watch satisfying sand flows as you eliminate blocks. Chain reactions create spectacular visual effects.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-palette"></i>
+                        <h3>Colorful Graphics</h3>
+                        <p>Beautifully designed sand blocks with smooth animations and eye-catching visual effects.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Simple Controls</h3>
+                        <p>Easy-to-learn drag and drop mechanics suitable for players of all skill levels.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Daily Challenges</h3>
+                        <p>Complete special daily levels to earn bonus rewards and climb the leaderboards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download" id="download" aria-labelledby="download-title">
+            <div class="container">
+                <h2 id="download-title">Ready to Play?</h2>
+                <p>Join millions of players worldwide enjoying this relaxing puzzle experience.</p>
+                
+                <div class="download-buttons">
+                    <a href="#" class="store-btn" aria-label="Download on App Store">
+                        <i class="fab fa-apple"></i>
+                        <div class="btn-text">
+                            <small>Download on the</small>
+                            <span>App Store</span>
+                        </div>
+                    </a>
+                    <a href="#" class="store-btn" aria-label="Get it on Google Play">
+                        <i class="fab fa-google-play"></i>
+                        <div class="btn-text">
+                            <small>Get it on</small>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <p style="margin-top: 30px; font-size: 14px; opacity: 0.9;">
+                    Free to download. In-app purchases available. Parental controls available.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sand Blast - Pyramid Edition</h3>
+                    <p>A relaxing and fun elimination puzzle game. Suitable for all ages.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <div class="footer-links">
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="terms.html#privacy">Privacy Policy</a>
+                        <a href="terms.html#eula">End User License Agreement</a>
+                        <a href="#refund">Refund Policy</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Support</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><strong>Email:</strong> ychen1987611@gmail.com</p>
+                            <p>For support, feedback, or business inquiries</p>
+                        </div>
+                    </div>
+                    <p>We typically respond within 24-48 hours.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sand Blast - Pyramid Edition. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 12px;">
+                    Apple and the Apple logo are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.querySelector('nav ul');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            menu.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('nav ul');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth <= 768 && 
+                !menu.contains(event.target) && 
+                !menuBtn.contains(event.target) && 
+                menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Update menu for window resize
+        window.addEventListener('resize', function() {
+            const menu = document.querySelector('nav ul');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth > 768) {
+                menu.classList.remove('active');
+                menu.style.display = '';
+                menuBtn.setAttribute('aria-expanded', 'false');
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Initialize mobile menu
+        if (window.innerWidth <= 768) {
+            document.querySelector('nav ul').style.display = 'none';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        const menu = document.querySelector('nav ul');
+                        const menuBtn = document.querySelector('.mobile-menu-btn');
+                        menu.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
