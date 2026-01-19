@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Sand Blast - Pyramid Edition</title>
+    <meta name="description" content="Terms of Service for Sand Blast - Pyramid Edition. Please read these terms carefully before using our game.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF9800;
+            --primary-dark: #F57C00;
+            --secondary: #2196F3;
+            --secondary-dark: #1976D2;
+            --dark: #2C3E50;
+            --light: #F5F7FA;
+            --gray: #7F8C8D;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.95));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Terms Content */
+        .terms-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            padding: 50px;
+            margin-bottom: 60px;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            font-style: italic;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+        }
+
+        .terms-section h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .terms-section h3 {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin: 25px 0 15px;
+        }
+
+        .terms-section p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .terms-section ul,
+        .terms-section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .important-note {
+            background-color: #fff8e1;
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .compliance-note {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contact-box {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .back-home {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-home a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .back-home a:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .terms-container {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                margin-top: 15px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .terms-container {
+                padding: 30px;
+            }
+            
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .terms-container {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--secondary);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        SBP
+                    </div>
+                    <div class="logo-text">
+                        <h1>Sand <span class="highlight">Blast</span></h1>
+                        <p>Pyramid Edition</p>
+                    </div>
+                </a>
+                
+                <nav>
+                    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#privacy">Privacy</a></li>
+                        <li><a href="#" class="active">Terms</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" aria-labelledby="page-title">
+        <div class="container">
+            <h1 id="page-title">Terms of Service</h1>
+            <p>Please read these terms and conditions carefully before using Sand Blast - Pyramid Edition.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container">
+            <div class="terms-container">
+                <div class="last-updated">
+                    <p><i class="fas fa-clock"></i> Last Updated: October 15, 2023</p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+                        <li><a href="#description">2. Description of Service</a></li>
+                        <li><a href="#accounts">3. User Accounts</a></li>
+                        <li><a href="#purchases">4. In-App Purchases</a></li>
+                        <li><a href="#refunds">5. Refund Policy</a></li>
+                        <li><a href="#privacy-policy">6. Privacy Policy</a></li>
+                        <li><a href="#intellectual">7. Intellectual Property</a></li>
+                        <li><a href="#conduct">8. User Conduct</a></li>
+                        <li><a href="#termination">9. Termination</a></li>
+                        <li><a href="#liability">10. Limitation of Liability</a></li>
+                        <li><a href="#changes">11. Changes to Terms</a></li>
+                        <li><a href="#contact-info">12. Contact Information</a></li>
+                    </ul>
+                </div>
+
+                <!-- Terms Sections -->
+                <div class="terms-section" id="acceptance">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By downloading, installing, or using Sand Blast - Pyramid Edition ("the Game"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Game.</p>
+                    
+                    <div class="important-note">
+                        <p><strong>Important:</strong> If you are under the age of 13, you must have your parent or legal guardian read and agree to these terms on your behalf.</p>
+                    </div>
+                </div>
+
+                <div class="terms-section" id="description">
+                    <h2>2. Description of Service</h2>
+                    <p>Sand Blast - Pyramid Edition is a puzzle elimination game available on mobile platforms. The Game includes:</p>
+                    <ul>
+                        <li>Free gameplay with optional in-app purchases</li>
+                        <li>Progression through levels of increasing difficulty</li>
+                        <li>Optional account creation for progress saving</li>
+                        <li>Leaderboard functionality (optional)</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section" id="accounts">
+                    <h2>3. User Accounts</h2>
+                    <p>You may choose to create an account to save your game progress. When creating an account, you must provide accurate information and maintain the security of your credentials.</p>
+                    
+                    <div class="compliance-note">
+                        <p><strong>COPPA Compliance:</strong> We do not knowingly collect personal information from children under 13 without parental consent. Parents can contact us to review or delete their child's information.</p>
+                    </div>
+                </div>
+
+                <div class="terms-section" id="purchases">
+                    <h2>4. In-App Purchases</h2>
+                    <p>The Game offers optional in-app purchases for virtual items and currency. All purchases are processed through the respective app stores (Apple App Store, Google Play Store).</p>
+                    
+                    <h3>4.1 Purchase Authorization</h3>
+                    <p>By making a purchase, you authorize the applicable app store to charge your payment method for the purchase amount.</p>
+                    
+                    <h3>4.2 Pricing</h3>
+                    <p>Prices are displayed in your local currency and are subject to change without notice. Taxes may apply based on your location.</p>
+                </div>
+
+                <div class="terms-section" id="refunds">
+                    <h2>5. Refund Policy</h2>
+                    <p>All sales are final unless required by law. Refund requests must be submitted through the respective app store's refund process. We cannot process refunds directly.</p>
+                    
+                    <div class="important-note">
+                        <p><strong>Note:</strong> Virtual items cannot be transferred, exchanged, or refunded for cash or other goods.</p>
+                    </div>
+                </div>
+
+                <div class="terms-section" id="privacy-policy">
+                    <h2>6. Privacy Policy</h2>
+                    <p>Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your information.</p>
+                    
+                    <h3>6.1 Information We Collect</h3>
+                    <ul>
+                        <li>Game progress and settings</li>
+                        <li>Device information for technical support</li>
+                        <li>Purchase history (processed by app stores)</li>
+                        <li>Optional: Account information if you create an account</li>
+                    </ul>
+                    
+                    <h3>6.2 Data Usage</h3>
+                    <p>We use collected data to:</p>
+                    <ul>
+                        <li>Provide and improve the Game</li>
+                        <li>Prevent fraud and ensure security</li>
+                        <li>Comply with legal obligations</li>
+                    </ul>
+                    
+                    <h3>6.3 Third-Party Services</h3>
+                    <p>We use third-party services for analytics and advertising. These services have their own privacy policies.</p>
+                    
+                    <h3>6.4 GDPR Compliance</h3>
+                    <p>EU users have the right to access, correct, or delete their personal data. Contact us at ychen1987611@gmail.com to exercise these rights.</p>
+                </div>
+
+                <div class="terms-section" id="intellectual">
+                    <h2>7. Intellectual Property</h2>
+                    <p>All game content, including graphics, designs, and code, is owned by Sand Blast - Pyramid Edition or its licensors. You are granted a limited license to use the Game for personal, non-commercial purposes.</p>
+                </div>
+
+                <div class="terms-section" id="conduct">
+                    <h2>8. User Conduct</h2>
+                    <p>You agree not to:</p>
+                    <ul>
+                        <li>Use the Game for any illegal purpose</li>
+                        <li>Attempt to hack or modify the Game</li>
+                        <li>Use automated systems to access the Game</li>
+                        <li>Harass or abuse other users</li>
+                        <li>Share inappropriate content</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section" id="termination">
+                    <h2>9. Termination</h2>
+                    <p>We may terminate or suspend your access to the Game if you violate these terms. You may stop using the Game at any time.</p>
+                </div>
+
+                <div class="terms-section" id="liability">
+                    <h2>10. Limitation of Liability</h2>
+                    <p>To the maximum extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the Game.</p>
+                </div>
+
+                <div class="terms-section" id="changes">
+                    <h2>11. Changes to Terms</h2>
+                    <p>We may update these terms periodically. Continued use of the Game after changes constitutes acceptance of the new terms.</p>
+                </div>
+
+                <div class="terms-section" id="eula">
+                    <h2>End User License Agreement (EULA)</h2>
+                    <p>By using Sand Blast - Pyramid Edition, you agree to the following license terms:</p>
+                    <ol>
+                        <li>You are granted a non-exclusive, non-transferable license to use the Game</li>
+                        <li>You may not reverse engineer, decompile, or disassemble the Game</li>
+                        <li>You may not rent, lease, or sublicense the Game</li>
+                        <li>The Game is provided "as is" without warranties</li>
+                    </ol>
+                </div>
+
+                <div class="terms-section" id="contact-info">
+                    <h2>12. Contact Information</h2>
+                    <p>For questions about these terms, please contact:</p>
+                    
+                    <div class="contact-box">
+                        <h3><i class="fas fa-envelope"></i> Support Email</h3>
+                        <p>ychen1987611@gmail.com</p>
+                        <p>We strive to respond within 48 hours.</p>
+                    </div>
+                </div>
+
+                <div class="back-home">
+                    <a href="index.html">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sand Blast - Pyramid Edition</h3>
+                    <p>A relaxing and fun elimination puzzle game. Suitable for all ages.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal Documents</h3>
+                    <div class="footer-links">
+                        <a href="#acceptance">Terms of Service</a>
+                        <a href="#privacy-policy">Privacy Policy</a>
+                        <a href="#eula">EULA</a>
+                        <a href="#refunds">Refund Policy</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Support</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><strong>Email:</strong> ychen1987611@gmail.com</p>
+                            <p>For support or legal inquiries</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sand Blast - Pyramid Edition. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 12px;">
+                    This game complies with applicable laws including COPPA and GDPR.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.querySelector('nav ul');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            menu.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('nav ul');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth <= 768 && 
+                !menu.contains(event.target) && 
+                !menuBtn.contains(event.target) && 
+                menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Update menu for window resize
+        window.addEventListener('resize', function() {
+            const menu = document.querySelector('nav ul');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth > 768) {
+                menu.classList.remove('active');
+                menu.style.display = '';
+                menuBtn.setAttribute('aria-expanded', 'false');
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Initialize mobile menu
+        if (window.innerWidth <= 768) {
+            document.querySelector('nav ul').style.display = 'none';
+        }
+
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL hash without scrolling
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
